@@ -1,19 +1,26 @@
-function insertionSort(arr) {
-    const n = arr.length;
-    for (let i = 1; i < n; i++) {
-        let key = arr[i];
-        let j = i - 1;
-        // Move elements of arr[0..i-1], that are greater than key,
-        // to one position ahead of their current position
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j--;
+function isPalindrome(word) {
+    // Convert the word to lowercase for case-insensitive comparison
+    word = word.toLowerCase();
+    // Get the length of the word
+    var len = word.length;
+    // Loop through the word and compare characters from start and end
+    for (var i = 0; i < Math.floor(len / 2); i++) {
+        if (word[i] !== word[len - 1 - i]) {
+            // If characters don't match, it's not a palindrome
+            return false;
         }
-        arr[j + 1] = key;
     }
+    // If all characters match, it's a palindrome
+    return true;
 }
 
-// Example usage:
-let arr = [12, 11, 13, 5, 6];
-insertionSort(arr);
-console.log("Sorted array is:", arr);
+// Test cases
+var words = ["gag", "kayak", "php", "radar", "hello"];
+
+words.forEach(function(word) {
+    if (isPalindrome(word)) {
+        console.log(word + " is a palindrome.");
+    } else {
+        console.log(word + " is not a palindrome.");
+    }
+});
